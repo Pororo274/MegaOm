@@ -89,6 +89,10 @@ if (!isset($_SESSION['uid'])) {
                         include('incl/one-request.php');
                     }
 
+                    else if ($_GET['p'] == 'add-master') {
+                        include('incl/add-master.php');
+                    }
+
                 } else {
 
                     include('incl/start.php');

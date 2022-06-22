@@ -1,5 +1,5 @@
 <?php
-if (!isCanSee($_SESSION['role'], [2])) {
+if (!isCanSee($_SESSION['role'], [2, 3])) {
     die();
 }
 
@@ -23,14 +23,36 @@ if (isset($_GET['remove'])) {
     $prepare->execute($params);
 }
 
+if (isset($_POST['add-work'])) {
+    $sql = "UPDATE request SET worker_id = :worker_id WHERE id = :id";
+    $params = [
+        'worker_id' => $_POST['worker'],
+        'id' => $_POST['request_id']
+    ];
+
+    $prepare = $conn->prepare($sql);
+    $prepare->execute($params);
+}
+
 $status = $_GET['s'] ?? 1;
 
-$sql = "SELECT request.id AS id, request.create_date AS create_date, status.name AS name FROM request
-        JOIN status ON request.status_id = status.id
-        WHERE status_id = :status_id";
 $params = [
     'status_id' => $status
 ];
+
+if ($_SESSION['role'] == 2) {
+    $sql = "SELECT request.id AS id, request.create_date AS create_date, status.name AS name FROM request
+            JOIN status ON request.status_id = status.id
+            WHERE status_id = :status_id AND worker_id IS NULL";
+} else {
+    $sql = "SELECT request.id AS id, request.create_date AS create_date, status.name AS name FROM request
+        JOIN status ON request.status_id = status.id
+        WHERE status_id = :status_id AND worker_id = :id";
+    $params['id'] = $_SESSION['uid'];
+}
+
+
+
 
 $prepare = $conn->prepare($sql);
 $prepare->execute($params);
@@ -44,8 +66,22 @@ $prepare->execute($params);
         <div class="title__row">
 
             <h1 class="title__status">Админ панель</h1>
+            <div class="title__row">
 
-            <a href="?p=users" class="start__button button">Пользователи</a>
+                <?php
+
+                if ($_SESSION['role'] == 2) {
+                    ?>
+                    <a href="?p=add-master" class="start__button button" style="width: initial; display: inline-block; padding: 15px 30px">Добавить мастера</a>
+                    <?php
+                }
+
+                ?>
+                
+                <a href="?p=users" class="start__button button">Пользователи</a>
+            </div>
+
+            
 
         </div>
 
@@ -59,7 +95,7 @@ $prepare->execute($params);
 
         </div>
 
-        <form name="order" class="cart__form">
+        <div class="cart__form">
 
             <div class="cart__table-div">
 
@@ -104,6 +140,10 @@ $prepare->execute($params);
 
                                 <div class="control" style="align-items: center">
 
+                                <?php
+
+                                if ($_SESSION['role'] == 3) {
+                                    ?>
                                     <a href="?p=admin-panel&id=<?= $request['id'] ?>&accept" class="cataloge-item__add-to-cart admin-panel__icon">
 
                                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -133,7 +173,11 @@ $prepare->execute($params);
                                         </svg>
 
                                     </a>
+                                    <?php
+                                }
 
+                                if ($_SESSION['role'] == 2) {
+                                    ?>
                                     <a href="?p=admin-panel&id=<?= $request['id'] ?>&remove" class="cataloge-item__add-to-cart admin-panel__icon">
 
                                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -167,6 +211,37 @@ $prepare->execute($params);
                                         </svg>
 
                                     </a>
+                                    <form action="" class="form" name="add-work" method="POST">
+                                        <div class="title__row">
+                                            <input type="text" class="form__input submit" value="<?= $request['id'] ?>" name="request_id" style="display: none; position: absolute;">
+                                            <select name="worker" id="" class="form__input" style="width: initial;">
+                                                <?php
+
+                                                $sql = "SELECT id, fio FROM user WHERE role_id = 3";
+                                                $prepareWorker = $conn->prepare($sql);
+                                                $prepareWorker->execute();
+
+                                                while ($worker = $prepareWorker->fetch(PDO::FETCH_ASSOC)) {
+                                                    ?>
+                                                    <option value="<?= $worker['id'] ?>" selected><?= $worker['fio'] ?></option>
+                                                    <?php
+                                                }
+
+                                                ?>
+                                            </select>
+                                            <input type="submit" class="form__input submit" value="Добавить" name="add-work">
+                                        </div>
+                                    </form>
+                                    <?php
+                                }
+
+                                ?>
+
+
+
+
+
+
                                     <a href="?p=one-request&id=<?= $request['id'] ?>" class="">
                                         Подробнее
                                     </a>
@@ -189,7 +264,7 @@ $prepare->execute($params);
 
             </div>
 
-        </form>
+        </div>
 
     </div>
 
