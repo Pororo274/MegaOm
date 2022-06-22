@@ -1,6 +1,6 @@
 <?php
 
-if (!isCanSee($_SESSION['role'], [1, 2])) {
+if (!isCanSee($_SESSION['role'], [1, 2, 3])) {
     header('Location: ?p=start');
     die();
 }
@@ -61,6 +61,15 @@ if (isset($user['avatar'])) {
                 if ($_SESSION['role'] == 2) {
                     ?>
                     <a href="?p=admin-panel" class="start__button button">Админ панель</a>
+                    <?php
+                }
+
+                ?>
+
+                <?php
+                if ($_SESSION['role'] == 3) {
+                    ?>
+                    <a href="?p=admin-panel" class="start__button button">Список работ</a>
                     <?php
                 }
 
