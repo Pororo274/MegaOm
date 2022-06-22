@@ -2792,7 +2792,7 @@ h4 {
 
 .cart__table th {
 
-    padding: 0px 0px 30px 0px;
+    padding: 0px 30px 30px 0px;
 
     font-weight: normal;
 
@@ -3250,7 +3250,7 @@ form .cart__submit:hover {
 
 .admin-panel__icon {
 
-    width: 35px;
+    width: 85px;
 
     height: 35px;
 
@@ -3310,7 +3310,7 @@ form .cart__submit:hover {
 
 .ban__link:hover {
 
-    color: #fc273d;
+    color: #ff0019;
 
 }
 
@@ -3629,4 +3629,98 @@ input[type=submit] {
 .on-main:hover {
     background-color: #fff;
     color: #000;
+}
+
+.copyright__row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.terms-of-use {
+    transition: .3s ease-in-out;
+}
+
+.terms-of-use:hover {
+    color:#FE495A;
+}
+
+.user__profile input[type=submit] {
+    width: 190px;
+    border: 1px solid #FE495A;
+    color: #fff;
+}
+
+.user__profile input[type=submit]:hover {
+    background-color: #FE495A;
+}
+
+.exit {
+    width: 190px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #FE495A;
+    border-radius: 30px;
+    transition: .3s ease-in-out;
+}
+
+.exit:hover {
+    background-color: #FE495A;
+}
+
+.more {
+    transition: .3s ease-in-out;
+}
+
+.more:hover {
+    color: #FE495A;
+}
+
+.form input {
+    height: 50px;
+}
+
+.admin__row {
+    flex-wrap: nowrap;
+}
+
+.form select {
+    appearance: none;
+    padding: 0px;
+    width: 100%;
+    background: url('../img/select.svg') no-repeat;
+    background-position: center right 20px;
+}
+
+.form select option {
+    color: #000;
+}
+
+.form select:focus {
+    background: url('../img/select_close.svg') no-repeat;
+    background-position: center right 20px;
+}
+
+.request__info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+}
+
+.request__column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.request__title {
+    margin-top: 50px;
+}
+
+.master-panel__icon {
+    width: 35px;
+    height: 35px;
 }

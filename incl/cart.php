@@ -1,3 +1,4 @@
+<script src="js/script.js"></script>
 <?php
 
 function validate() {
@@ -7,6 +8,10 @@ function validate() {
 
     if (empty($_POST['phone'])) {
         return 'Укажите телефон';
+    }
+
+    if (strlen($_POST['phone']) < 17) {
+        return 'Укажите корректный телефон';
     }
 }
 
@@ -202,7 +207,7 @@ $count = $prepare->fetch(PDO::FETCH_ASSOC);
 
                                 <input class="cart-item__input cart__standart-input" type="text" name="fio" placeholder="ФИО" value="<?= $_POST['fio'] ?? '' ?>">
 
-                                <input class="cart-item__input cart__standart-input" type="text" name="phone" placeholder="Телефон" value="<?= $_POST['phone'] ?? '' ?>">
+                                <input class="cart-item__input cart__standart-input tel" type="text" name="phone" placeholder="Телефон" value="<?= $_POST['phone'] ?? '' ?>">
 
                             </div>
 

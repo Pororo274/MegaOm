@@ -99,11 +99,11 @@ if (isset($_POST['sign-in'])) {
 
                     <form action="#" class="content__right__form form" name="sign-in" method="POST" style="margin-top: 0">
 
-                        <input type="text" class="form__input" placeholder="Email" name="email" required value="<?= $_POST['email'] ?? '' ?>">
+                        <input type="text" class="form__input" placeholder="Email" name="email" value="<?= $_POST['email'] ?? '' ?>">
 
                         <div class="form__password">
 
-                            <input type="password" id="password__input" class="form__input" placeholder="Пароль" name="password" required value="<?= $_POST['password'] ?? '' ?>">
+                            <input type="password" id="password__input" class="form__input" placeholder="Пароль" name="password" value="<?= $_POST['password'] ?? '' ?>">
 
                         </div>
 

@@ -31,6 +31,9 @@
                 </svg>
             </div>
         </div>
-        <p class="copyright">©2022 МЕГАОМ. Все права защищены.</p>
+        <div class="copyright__row">
+            <p class="copyright">©2022 МЕГАОМ. Все права защищены.</p>
+            <a href="documents/polzovatelskoe-soglashenie.doc" class="copyright terms-of-use">Пользовательское соглашение.</a>
+        </div>
     </div>
 </footer>

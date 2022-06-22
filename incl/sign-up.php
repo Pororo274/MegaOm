@@ -98,19 +98,19 @@ if (isset($_POST['sign-up'])) {
 
                         <form action="" method="POST" name="sign-up" class="content__right__form form" style="margin-top: 0">
 
-                        <input type="text" class="form__input" placeholder="ФИО" name="fio" value="<?= $_POST['fio'] ?? '' ?>" required>
+                        <input type="text" class="form__input" placeholder="ФИО" name="fio" value="<?= $_POST['fio'] ?? '' ?>">
 
-                            <input type="text" class="form__input" placeholder="Email" name="email" value="<?= $_POST['email'] ?? '' ?>" required>
+                            <input type="text" class="form__input" placeholder="Email" name="email" value="<?= $_POST['email'] ?? '' ?>">
 
                             <div class="form__password">
 
-                                <input type="password" id="password__input" class="form__input" placeholder="Пароль" name="password" maxlength="127" value="<?= $_POST['password'] ?? '' ?>" required>
+                                <input type="password" id="password__input" class="form__input" placeholder="Пароль" name="password" maxlength="127" value="<?= $_POST['password'] ?? '' ?>">
 
                             </div>
 
                             <div class="form__password">
 
-                                <input type="password" id="password__input2" class="form__input" placeholder="Подтвердите пароль" name="password_confirm" maxlength="127" value="<?= $_POST['password_confirm'] ?? '' ?>" required>
+                                <input type="password" id="password__input2" class="form__input" placeholder="Подтвердите пароль" name="password_confirm" maxlength="127" value="<?= $_POST['password_confirm'] ?? '' ?>">
 
                             </div>
 

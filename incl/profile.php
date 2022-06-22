@@ -147,7 +147,7 @@ if (isset($user['avatar'])) {
                     </div>
 
                 </form>
-                <a href="?exit" class="exit" style="color: #FE495A">Выйти</a>
+                <a href="?exit" class="exit">Выйти</a>
 
             </div>
 

@@ -10,7 +10,7 @@ $params = [
 $prepareProduct = $conn->prepare($sql);
 $prepareProduct->execute($params);
 
-$sql = "SELECT user.fio AS fio, request.create_date AS create_date, request.id AS id
+$sql = "SELECT user.fio AS fio, request.create_date AS create_date, request.id AS id, request.phone AS phone
         FROM request
         JOIN user ON request.user_id = user.id
         WHERE request.id = :id";
@@ -21,19 +21,25 @@ $info = $prepare->fetch(PDO::FETCH_ASSOC);
 <div class="page__status status">
     <div class="status__container container">
         <h1 class="title__status">Заявка</h1>
-        <div class="ddd">
-            <div class="info__name">Код заявки:</div>
-            <div class="info__target"><?= $info['id'] ?></div>
+        <div class="request__column">
+            <div class="request__info">
+                <div class="info__name">Код заявки:</div>
+                <div class="info__target"><?= $info['id'] ?></div>
+            </div>
+            <div class="request__info">
+                <div class="info__name">ФИО:</div>
+                <div class="info__target"><?= $info['fio'] ?></div>
+            </div>
+            <div class="request__info">
+                <div class="info__name">Телефон:</div>
+                <div class="info__target"><?= $info['phone'] ?></div>
+            </div>
+            <div class="request__info">
+                <div class="info__name">Дата отправки:</div>
+                <div class="info__target"><?= date('d.m.Y', $info['create_date']) ?></div>
+            </div>
         </div>
-        <div class="ddd">
-            <div class="info__name">ФИО:</div>
-            <div class="info__target"><?= $info['fio'] ?></div>
-        </div>
-        <div class="ddd">
-            <div class="info__name">Дата отправки:</div>
-            <div class="info__target"><?= date('d.m.Y', $info['create_date']) ?></div>
-        </div>
-        <h2 style="margin-bottom: 20px">Список услуг</h2>
+        <h2 class="request__title">Список услуг</h2>
         <div class="cataloge__list list">
         <?php
             while ($product = $prepareProduct->fetch(PDO::FETCH_ASSOC)) {
