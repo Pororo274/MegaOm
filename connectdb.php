@@ -31,11 +31,13 @@ function insertPDO($table, $params) {
   foreach ($params AS $key => $value) {
     $tmp[count($tmp)] = ':' . $key;
   }
+
   $sql .= implode(',', $tmp);
 
   $sql .= ")";
   
   $prepare = $conn->prepare($sql);
+  
   return $prepare->execute($params);
 }
 

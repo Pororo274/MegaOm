@@ -11,7 +11,6 @@ if (isset($_GET['exit'])) {
 if (!isset($_SESSION['uid'])) {
     $_SESSION['role'] = 0;
 }
-
 ?>
 
 <!DOCTYPE html>

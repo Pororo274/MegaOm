@@ -81,13 +81,14 @@ if (isset($_POST['sign-in'])) {
             <div class="wrapper__content">
 
                 <div class="content__left__body">
-                    <a href="../" class="on-main" style="font-size: 18px; font-weight: 700">На главную</a>
 
                     <h1 class="content__left__header">Добро пожаловать!</h1>
 
                     <p class="content__left__text">Нет аккаунта? Так создайте его!</p>
 
                     <a class="content__left__button button button__auth" href="../incl/sign-up.php">Создать</a>
+
+                    <a href="../" class="on-main">На главную</a>
 
                 </div>
 
