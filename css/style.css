@@ -3686,6 +3686,7 @@ input[type=submit] {
 }
 
 .form select {
+    height: 50px;
     appearance: none;
     padding: 0px;
     width: 100%;
@@ -3723,4 +3724,14 @@ input[type=submit] {
 .master-panel__icon {
     width: 35px;
     height: 35px;
+}
+
+.invalid__page {
+    background: #23253A;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    font-weight: 700;
 }

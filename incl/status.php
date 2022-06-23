@@ -56,6 +56,8 @@ $prepare->execute($params);
                         <td><?= date('d.m.Y', $request['create_date']) ?></td>
 
                         <td><?= $request['name'] ?></td>
+
+                        <td><a href="?p=one-request&id=<?= $request['id'] ?>" class="more">Подробнее</a></td>
                         <!-- 
                         <td>
 

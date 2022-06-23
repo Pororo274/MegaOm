@@ -42,8 +42,10 @@
 
             if (isset($_SESSION['uid'])) {
                 $to = '?p=profile';
+                $do = 'incl/sign-in.php';
             } else {
                 $to = '#sign-in_modal';
+                $do = '#sign-in_modal';
             }
 
             ?>
@@ -60,7 +62,7 @@
 
             <?php
                 if(empty($_SESSION['uid'])) {?>
-                    <a class="header__cart" href="incl/sign-in.php">
+                    <a class="header__cart" href="<?= $do ?>">
 
                     <svg width="30" height="30" viewBox="0 0 29 26" fill="none" xmlns="http://www.w3.org/2000/svg">
 

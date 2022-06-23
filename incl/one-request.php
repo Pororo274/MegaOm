@@ -1,22 +1,60 @@
 <?php
-$sql = "SELECT product.name AS name, product.price AS price, product.unit AS unit
-        FROM request_product
-        JOIN product ON request_product.product_id = product.id
-        WHERE request_product.request_id = :id";
-$params = [
+
+if($_SESSION['role'] == 2) {
+    $sql = "SELECT product.name AS name, product.price AS price, product.unit AS unit
+    FROM request_product
+    JOIN product ON request_product.product_id = product.id
+    WHERE request_product.request_id = :id";
+    $params = [
     'id' => $_GET['id']
-];
+    ];
+    $prepareProduct = $conn->prepare($sql);
+    $prepareProduct->execute($params);
 
-$prepareProduct = $conn->prepare($sql);
-$prepareProduct->execute($params);
-
-$sql = "SELECT user.fio AS fio, request.create_date AS create_date, request.id AS id, request.phone AS phone
+    $sql = "SELECT user.fio AS fio, request.create_date AS create_date, request.id AS id, request.phone AS phone
         FROM request
         JOIN user ON request.user_id = user.id
         WHERE request.id = :id";
-$prepare = $conn->prepare($sql);
-$prepare->execute($params);
-$info = $prepare->fetch(PDO::FETCH_ASSOC);
+    $prepare = $conn->prepare($sql);
+    $prepare->execute($params);
+    $info = $prepare->fetch(PDO::FETCH_ASSOC);
+}
+
+if($_SESSION['role'] == 1) {
+    $sql = "SELECT product.name AS name, product.price AS price, product.unit AS unit
+    FROM request_product
+    JOIN product ON request_product.product_id = product.id
+    WHERE request_product.request_id = :id";
+    $params = [
+        'id' => $_GET['id']
+    ];
+    $prepareProduct = $conn->prepare($sql);
+    $prepareProduct->execute($params);
+
+    $params = [
+        'id' => $_GET['id'],
+        'user_id' => $_SESSION['uid']
+    ];
+
+    $sql = "SELECT user.fio AS fio, request.create_date AS create_date, request.id AS id, request.phone AS phone
+        FROM request
+        JOIN user ON request.user_id = user.id
+        WHERE request.id = :id AND request.user_id = :user_id";
+    $prepare = $conn->prepare($sql);
+    $prepare->execute($params);
+    $info = $prepare->fetch(PDO::FETCH_ASSOC);
+
+    if ($info === false) {
+        ?>
+            <div class="invalid__page">
+                <?php
+                    echo 'Доступ запрещен';
+                    die();
+                ?>
+            </div>
+        <?
+    }
+}
 ?>
 <div class="page__status status">
     <div class="status__container container">

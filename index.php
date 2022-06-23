@@ -52,33 +52,43 @@ if (!isset($_SESSION['uid'])) {
                     }
 
                     else if($_GET['p'] == 'profile') {
-
-                        include('incl/profile.php');
-
+                        if(isset($_SESSION['uid'])) {
+                            include('incl/profile.php');
+                        } else {
+                            ?><script>document.location.href="?"</script><?
+                        }
                     }
 
                     else if($_GET['p'] == 'cart') {
-
-                        include('incl/cart.php');
+                        if(isset($_SESSION['uid'])) {
+                            include('incl/cart.php');
+                        } else {
+                            ?><script>document.location.href="?"</script><?
+                        }
 
                     }
 
                     else if($_GET['p'] == 'status') {
-
-                        include('incl/status.php');
-
+                        if(isset($_SESSION['uid'])) {
+                            include('incl/status.php');
+                        } else {
+                            ?><script>document.location.href="?"</script><?
+                        }
                     }
 
                     else if($_GET['p'] == 'admin-panel') {
-
-                        include('incl/admin-panel.php');
-
+                        if(isset($_SESSION['uid'])) {
+                            include('incl/admin-panel.php');
+                        } else {
+                            ?><script>document.location.href="?"</script><?
+                        }
                     }
-
                     else if($_GET['p'] == 'users') {
-
-                        include('incl/users.php');
-
+                        if(isset($_SESSION['uid'])) {
+                            include('incl/users.php');
+                        } else {
+                            ?><script>document.location.href="?"</script><?
+                        }
                     }
 
                     else if ($_GET['p'] == 'products') {
@@ -86,11 +96,21 @@ if (!isset($_SESSION['uid'])) {
                     }
 
                     else if ($_GET['p'] == 'one-request') {
-                        include('incl/one-request.php');
+                        if(isset($_SESSION['uid'])) {
+                            include('incl/one-request.php');
+                        } else {
+                            ?><script>document.location.href="?"</script><?
+                        }
                     }
 
                     else if ($_GET['p'] == 'add-master') {
-                        include('incl/add-master.php');
+                        if(isset($_SESSION['uid'])) {
+                            include('incl/add-master.php');
+                        } else {
+                            ?><script>document.location.href="?"</script><?
+                        }
+                    } else {
+                        ?><script>document.location.href="?"</script><?
                     }
 
                 } else {

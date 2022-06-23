@@ -243,7 +243,7 @@ $prepare->execute($params);
                             ?>
                             <td>
                                 <?php
-                                    if ($_SESSION['role'] > 2) {?>
+                                    if ($_SESSION['role'] >= 2) {?>
 
                                         <a href="?p=one-request&id=<?= $request['id'] ?>" class="more">
                                                     Подробнее
