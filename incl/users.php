@@ -3,12 +3,23 @@ if (!isCanSee($_SESSION['role'], [2])) {
     die();
 }
 
-
 if (isset($_GET['ban'])) {
-    $sql = "DELETE FROM user WHERE id = :id";
+
+    $sql = "UPDATE user SET is_ban=1 WHERE id = :id";
 
     $params = [
         'id' => $_GET['ban']
+    ];
+    $prepare = $conn->prepare($sql);
+    $prepare->execute($params);
+}
+
+
+if (isset($_GET['return'])) {
+    $sql = "UPDATE user SET is_ban=0 WHERE id = :id";
+
+    $params = [
+        'id' => $_GET['return']
     ];
     $prepare = $conn->prepare($sql);
     $prepare->execute($params);
@@ -60,8 +71,18 @@ $prepare->execute();
                             <?php
 
                             if ($user['role_id'] != 2) {
+                                
+                                if ($user['is_ban'] == 0) {
+                                    ?>
+                                    <td><a class="ban__link" href="?p=users&ban=<?= $user['id'] ?>">Забанить</a></td>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <td><a class="ban__link" href="?p=users&return=<?= $user['id'] ?>">Разбанить</a></td>
+                                    <?php                                    
+                                }
                                 ?>
-                                <td><a class="ban__link" href="?p=users&ban=<?= $user['id'] ?>">Забанить</a></td>
+
                                 <?php
                             } else {
                                 ?>

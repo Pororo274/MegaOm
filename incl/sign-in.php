@@ -37,10 +37,15 @@ if (isset($_POST['sign-in'])) {
         $user = $prepare->fetch(PDO::FETCH_ASSOC);
 
         if (password_verify($_POST['password'], $user['password'])) {
-            $_SESSION['uid'] = $user['id'];
-            $_SESSION['role'] = $user['role_id'];
-            header('Location: ../?p=profile');
-            die();
+            if ($user['is_ban'] == 0) {
+                $_SESSION['uid'] = $user['id'];
+                $_SESSION['role'] = $user['role_id'];
+                header('Location: ../?p=profile');
+                die();  
+            } else {
+                $msg = 'Вы забанены';
+            }
+
         } else {
             $msg = 'Неверный пароль';
         }
@@ -97,7 +102,7 @@ if (isset($_POST['sign-in'])) {
                     <h1 class="content__right__header">Авторизация</h1>
                     <div class="msg <?= !isset($msg) ? 'msg_hide' : '' ?>"><?= $msg ?? '' ?></div>
 
-                    <form action="#" class="content__right__form form" name="sign-in" method="POST" style="margin-top: 0">
+                    <form action="" class="content__right__form form" name="sign-in" method="POST" style="margin-top: 0">
 
                         <input type="text" class="form__input" placeholder="Email" name="email" value="<?= $_POST['email'] ?? '' ?>">
 
