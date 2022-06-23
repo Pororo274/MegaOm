@@ -37,10 +37,16 @@ if (isset($_POST['sign-in'])) {
         $user = $prepare->fetch(PDO::FETCH_ASSOC);
 
         if (password_verify($_POST['password'], $user['password'])) {
-            $_SESSION['uid'] = $user['id'];
-            $_SESSION['role'] = $user['role_id'];
-            header('Location: ../?p=profile');
-            die();
+            if ($user['is_ban'] == 0) {
+                $_SESSION['uid'] = $user['id'];
+                $_SESSION['role'] = $user['role_id'];
+                header('Location: ../?p=profile');
+                die();  
+            } else {
+                $msg = 'Вы забанены';
+                die();
+            }
+
         } else {
             $msg = 'Неверный пароль';
         }
