@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION['role'] == 2) {
+if($_SESSION['role'] > 2) {
     $sql = "SELECT product.name AS name, product.price AS price, product.unit AS unit
     FROM request_product
     JOIN product ON request_product.product_id = product.id
