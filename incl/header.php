@@ -129,7 +129,7 @@
 
                 <li class="menu__item"><a href="<?= $to ?>" class="menu__link">Профиль</a></li>
 
-                <li class="menu__item"><a href="?p=cart" class="menu__link">Корзина</a></li>
+                <li class="menu__item"><a href="<?= $do ?>" class="menu__link">Корзина</a></li>
 
             </ul>
 

@@ -7,8 +7,6 @@ if (isset($_GET['ban'])) {
 
     $sql = "UPDATE user SET is_ban=1 WHERE id = :id";
 
-    $sql = "DELETE FROM user WHERE id = :id";
-
     $params = [
         'id' => $_GET['ban']
     ];

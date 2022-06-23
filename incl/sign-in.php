@@ -44,7 +44,6 @@ if (isset($_POST['sign-in'])) {
                 die();  
             } else {
                 $msg = 'Вы забанены';
-                die();
             }
 
         } else {
@@ -103,7 +102,7 @@ if (isset($_POST['sign-in'])) {
                     <h1 class="content__right__header">Авторизация</h1>
                     <div class="msg <?= !isset($msg) ? 'msg_hide' : '' ?>"><?= $msg ?? '' ?></div>
 
-                    <form action="#" class="content__right__form form" name="sign-in" method="POST" style="margin-top: 0">
+                    <form action="" class="content__right__form form" name="sign-in" method="POST" style="margin-top: 0">
 
                         <input type="text" class="form__input" placeholder="Email" name="email" value="<?= $_POST['email'] ?? '' ?>">
 
