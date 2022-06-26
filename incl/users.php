@@ -74,11 +74,11 @@ $prepare->execute();
                                 
                                 if ($user['is_ban'] == 0) {
                                     ?>
-                                    <td><a class="ban__link" href="?p=users&ban=<?= $user['id'] ?>">Забанить</a></td>
+                                    <td><a class="ban__link" href="?p=users&ban=<?= $user['id'] ?>">Заблокировать</a></td>
                                     <?php
                                 } else {
                                     ?>
-                                    <td><a class="ban__link" href="?p=users&return=<?= $user['id'] ?>">Разбанить</a></td>
+                                    <td><a class="ban__link" href="?p=users&return=<?= $user['id'] ?>">Разблокировать</a></td>
                                     <?php                                    
                                 }
                                 ?>

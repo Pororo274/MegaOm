@@ -60,7 +60,15 @@ $prepare->execute($params);
 
         <div class="title__row">
 
-            <h1 class="title__status">Админ панель</h1>
+            <?php
+                if($_SESSION['role'] == 2) {?>
+                    <h1 class="title__status">Админ панель</h1>
+                <?}
+                if($_SESSION['role'] == 3) {?>
+                    <h1 class="title__status">Список работ</h1>
+                <?}
+            ?>
+            
             <div class="title__row">
 
                 <?php
