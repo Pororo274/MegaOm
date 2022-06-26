@@ -36,7 +36,7 @@ $prepare->execute($params);
 
             <a href="?p=status&s=2" class="status__item">В модерации</a>
 
-            <a href="?p=status&s=3" class="status__item">Принятые</a>
+            <a href="?p=status&s=3" class="status__item">Выполненные</a>
 
         </div>
 

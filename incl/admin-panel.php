@@ -39,10 +39,23 @@ $params = [
 ];
 
 if ($_SESSION['role'] == 2) {
+    if($_GET['s'] == 3) {
+        $sql = "SELECT request.id AS id, request.create_date AS create_date, status.name AS name FROM request
+        JOIN status ON request.status_id = status.id
+        WHERE status_id = :status_id";
+    } else {
+        $sql = "SELECT request.id AS id, request.create_date AS create_date, status.name AS name FROM request
+        JOIN status ON request.status_id = status.id
+        WHERE status_id = :status_id AND worker_id IS NULL";
+    }
+
+} else if($_SESSION['role'] == 3) {
     $sql = "SELECT request.id AS id, request.create_date AS create_date, status.name AS name FROM request
-            JOIN status ON request.status_id = status.id
-            WHERE status_id = :status_id AND worker_id IS NULL";
-} else {
+    JOIN status ON request.status_id = status.id
+    WHERE status_id = :status_id AND worker_id = :id";
+    $params['id'] = $_SESSION['uid'];
+} 
+else {
     $sql = "SELECT request.id AS id, request.create_date AS create_date, status.name AS name FROM request
         JOIN status ON request.status_id = status.id
         WHERE status_id = :status_id AND worker_id = :id";
@@ -90,12 +103,18 @@ $prepare->execute($params);
         </div>
 
         <div class="status__list">
+        <?php
+            if($_SESSION['role'] == 3) {
 
-        <a href="?p=admin-panel&s=1" class="status__item">Отклоненные</a>
+            } else {?>
+                <a href="?p=admin-panel&s=1" class="status__item">Отклоненные</a>
+            <?}
+        ?>
+
 
         <a href="?p=admin-panel&s=2" class="status__item">В модерации</a>
 
-        <a href="?p=admin-panel&s=3" class="status__item">Принятые</a>
+        <a href="?p=admin-panel&s=3" class="status__item">Выполненные</a>
 
         </div>
 
@@ -135,7 +154,7 @@ $prepare->execute($params);
 
                             <td><?= date('d.m.Y', $request['create_date']) ?></td>
 
-                            <td><?= $request['name'] ?></td>
+                            <td><!--$request['name']-->Выполнено</td>
 
                             <?php
 
