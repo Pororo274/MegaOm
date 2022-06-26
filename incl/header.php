@@ -77,7 +77,7 @@
                     </svg>
 
                 </a>
-                <?}
+                <?php }
                 else if ($_SESSION['role'] < 2) {
                     ?>
                     <a class="header__cart" href="?p=cart">

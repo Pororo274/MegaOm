@@ -55,7 +55,7 @@ if (!isset($_SESSION['uid'])) {
                         if(isset($_SESSION['uid'])) {
                             include('incl/profile.php');
                         } else {
-                            ?><script>document.location.href="?"</script><?
+                            ?><script>document.location.href="?"</script><?php
                         }
                     }
 
@@ -63,7 +63,7 @@ if (!isset($_SESSION['uid'])) {
                         if(isset($_SESSION['uid'])) {
                             include('incl/cart.php');
                         } else {
-                            ?><script>document.location.href="?"</script><?
+                            ?><script>document.location.href="?"</script><?php
                         }
 
                     }
@@ -72,7 +72,7 @@ if (!isset($_SESSION['uid'])) {
                         if(isset($_SESSION['uid'])) {
                             include('incl/status.php');
                         } else {
-                            ?><script>document.location.href="?"</script><?
+                            ?><script>document.location.href="?"</script><?php
                         }
                     }
 
@@ -80,14 +80,14 @@ if (!isset($_SESSION['uid'])) {
                         if(isset($_SESSION['uid'])) {
                             include('incl/admin-panel.php');
                         } else {
-                            ?><script>document.location.href="?"</script><?
+                            ?><script>document.location.href="?"</script><?php
                         }
                     }
                     else if($_GET['p'] == 'users') {
                         if(isset($_SESSION['uid'])) {
                             include('incl/users.php');
                         } else {
-                            ?><script>document.location.href="?"</script><?
+                            ?><script>document.location.href="?"</script><?php
                         }
                     }
 
@@ -99,7 +99,7 @@ if (!isset($_SESSION['uid'])) {
                         if(isset($_SESSION['uid'])) {
                             include('incl/one-request.php');
                         } else {
-                            ?><script>document.location.href="?"</script><?
+                            ?><script>document.location.href="?"</script><?php
                         }
                     }
 
@@ -107,10 +107,10 @@ if (!isset($_SESSION['uid'])) {
                         if(isset($_SESSION['uid'])) {
                             include('incl/add-master.php');
                         } else {
-                            ?><script>document.location.href="?"</script><?
+                            ?><script>document.location.href="?"</script><?php
                         }
                     } else {
-                        ?><script>document.location.href="?"</script><?
+                        ?><script>document.location.href="?"</script><?php
                     }
 
                 } else {
