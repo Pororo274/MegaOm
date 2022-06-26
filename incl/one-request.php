@@ -52,7 +52,7 @@ if($_SESSION['role'] == 1) {
                     die();
                 ?>
             </div>
-        <?
+        <?php
     }
 }
 ?>

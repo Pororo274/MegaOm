@@ -1,6 +1,16 @@
 <?php
 $status = $_GET['s'] ?? 1;
 
+if (isset($_GET['remove'])) {
+    $sql = "UPDATE request SET status_id = 1 WHERE id = :id";
+    $params = [
+        'id' => $_GET['remove']
+    ];
+    $prepare = $conn->prepare($sql);
+    $prepare->execute($params);
+    echo "<script>document.href='?p=status&s=2'</script>";
+}
+
 $sql = "SELECT request.id AS id, request.create_date AS create_date, status.name AS name FROM request
         JOIN status ON request.status_id = status.id
         WHERE user_id = :user_id AND status_id = :status_id";
@@ -58,6 +68,17 @@ $prepare->execute($params);
                         <td><?= $request['name'] ?></td>
 
                         <td><a href="?p=one-request&id=<?= $request['id'] ?>" class="more">Подробнее</a></td>
+
+                        <?php
+
+                        if ($_GET['s'] == 2) {
+                            ?>
+                            <td><a href="?p=status&remove=<?= $request['id'] ?>&s=2" class="more">Отклонить</a></td>
+                            <?php
+                        }
+
+                        ?>
+                        
                         <!-- 
                         <td>
 
