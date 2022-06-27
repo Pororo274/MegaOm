@@ -43,7 +43,7 @@ if (isset($_POST['sign-in'])) {
                 header('Location: ../?p=profile');
                 die();  
             } else {
-                $msg = 'Вы забанены';
+                $msg = 'Вы заблокированы';
             }
 
         } else {

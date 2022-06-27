@@ -32,7 +32,7 @@ if (isset($_POST['add-work'])) {
     $prepare->execute($params);
 }
 
-$status = $_GET['s'] ?? 1;
+$status = $_GET['s'] ?? 2;
 
 $params = [
     'status_id' => $status
