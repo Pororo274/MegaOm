@@ -49,7 +49,7 @@ if (isset($user['avatar'])) {
 
                 if ($_SESSION['role'] == 1) {
                     ?>
-                    <a href="?p=status" class="start__button button">Заявки</a>
+                    <a href="?p=status&s=2" class="start__button button">Заявки</a>
                     <?php
                 }
 
@@ -60,7 +60,7 @@ if (isset($user['avatar'])) {
                 <?php
                 if ($_SESSION['role'] == 2) {
                     ?>
-                    <a href="?p=admin-panel" class="start__button button">Админ панель</a>
+                    <a href="?p=admin-panel&s=2" class="start__button button">Админ панель</a>
                     <?php
                 }
 
@@ -69,7 +69,7 @@ if (isset($user['avatar'])) {
                 <?php
                 if ($_SESSION['role'] == 3) {
                     ?>
-                    <a href="?p=admin-panel" class="start__button button">Список работ</a>
+                    <a href="?p=admin-panel&s=2" class="start__button button">Список работ</a>
                     <?php
                 }
 

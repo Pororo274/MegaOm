@@ -52,7 +52,23 @@ $prepare->execute($params);
 
                         <th>Дата заказа</th>
 
-                        <th>Статус</th>
+                        <?php
+                        if ($_GET['s'] == 3) {
+
+                        } else {
+                            ?>
+                            <th>Статус</th>
+                            <?php
+                        }
+
+                        if ($status == 2) {
+                            ?>
+                            <th>Управление</th>
+
+                            <?php
+                        }
+
+                        ?>
 
                     </tr>
 
@@ -64,8 +80,15 @@ $prepare->execute($params);
                         <td>#<?= $request['id'] ?></td>
 
                         <td><?= date('d.m.Y', $request['create_date']) ?></td>
-
-                        <td><!--$request['name']-->Выполнено</td>
+                        
+                        <?php
+                        if ($_GET['s'] == 3) {
+                            } else {
+                                ?>
+                                <td><?= $request['name'] ?></td>
+                                <?php
+                            }
+                            ?>
 
                         <td><a href="?p=one-request&id=<?= $request['id'] ?>" class="more">Подробнее</a></td>
 
