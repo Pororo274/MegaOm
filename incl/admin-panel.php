@@ -130,9 +130,14 @@ $prepare->execute($params);
 
                         <th>Дата заказа</th>
 
-                        <th>Статус</th>
-
                         <?php
+                        if ($_GET['s'] == 3) {
+
+                        } else {
+                            ?>
+                            <th>Статус</th>
+                            <?php
+                        }
 
                         if ($status == 2) {
                             ?>
@@ -154,9 +159,14 @@ $prepare->execute($params);
 
                             <td><?= date('d.m.Y', $request['create_date']) ?></td>
 
-                            <td><!--$request['name']-->Выполнено</td>
-
                             <?php
+
+                            if ($_GET['s'] == 3) {
+                            } else {
+                                ?>
+                                <td><?= $request['name'] ?></td>
+                                <?php
+                            }
 
                             if ($request['name'] == 'В модерации') {
                                 ?>
